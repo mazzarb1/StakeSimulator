@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by brandonmazzarella on 6/1/17.
@@ -8,8 +9,11 @@ public class StakeCalculator
     public static void main (String[] args)
     {
         Random rand = new Random();
+        Scanner scan = new Scanner(System.in);
 
-        int startingStack = 50;
+
+
+
         int stakeNumber = 1;
         int cashHigh = 50;
 
@@ -18,8 +22,14 @@ public class StakeCalculator
         int highestWin = 0;
         int loseStreak = 0;
 
+        System.out.println("Hello, how many rounds would you like to stake?");
+        int timesStaking = scan.nextInt();
+        System.out.println("How much money are you going to start with?");
+        int startingStack = scan.nextInt();
 
-        for(int i = 1; i <= 1000; i++) {
+
+
+        for(int i = 1; i <= timesStaking; i++) {
             int n = rand.nextInt(2) + 1;
 
             if(won)
@@ -41,7 +51,7 @@ public class StakeCalculator
             {
                 System.out.println("");
                 System.out.println("You ran out of money on round: " + (i-1));
-                i = 10000;
+                i = timesStaking + 1;
 
             }
 
@@ -75,7 +85,7 @@ public class StakeCalculator
                 winStreak = 0;
             }
 
-            if(i < 1000) {
+            if(i < timesStaking) {
                 System.out.println("Stake Round: " + i + " Ending Cash Stack: " + startingStack);
             }
         }
